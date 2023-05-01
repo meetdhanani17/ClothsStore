@@ -15,7 +15,7 @@ export default function Cart({ purchase, setPurchase }) {
     setShowForm((p) => true);
   }
   return (
-    <>
+    <div className="py-2">
       {Object.keys(purchase.cart).map((data, i) => {
         return (
           <SlideCard
@@ -26,11 +26,12 @@ export default function Cart({ purchase, setPurchase }) {
         );
       })}
       {Object.keys(purchase.cart).length > 0 ? (
-        <Button text="CheckOut" type="button" onClick={CheckOut} />
+        <div className="flex  justify-end pr-3">
+        <Button text="Check Out" type="button" onClick={CheckOut} /></div>
       ) : (
         <p className="text-center pt-2">Please Add Item to Cart</p>
       )}
       {showForm && <Info showFormBuy={showForm} setBuy={setShowForm} />}
-    </>
+    </div>
   );
 }

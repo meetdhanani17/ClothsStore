@@ -16,8 +16,6 @@ function App({ password }) {
   const [login, setLogin] = useState({ isLogin: false, userName: "" });
   const [purchase, setPurchase] = useState({ cart: [], buy: [] });
 
-  // login.isLogin === false && redirect("/");
-
   return (
     <>
       <Router>
