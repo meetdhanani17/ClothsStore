@@ -38,7 +38,7 @@ export default function SlideCard({
         : setCount((p) => p - 1);
     }
   }
-  console.log(dataCard);
+
   return (
     <>
       <div className="grid grid-cols-12 border border-black rounded-xl p-2 m-2 font-medium">

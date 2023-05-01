@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Home from "./component/Home";
 import "./App.css";
 import Navbar from "./component/Navbar";
@@ -10,6 +15,9 @@ import Login from "./component/Login/login";
 function App({ password }) {
   const [login, setLogin] = useState({ isLogin: false, userName: "" });
   const [purchase, setPurchase] = useState({ cart: [], buy: [] });
+
+  // login.isLogin === false && redirect("/");
+
   return (
     <>
       <Router>
@@ -33,46 +41,74 @@ function App({ password }) {
               exact
               path="/menswear"
               element={
-                <CustomItem
-                  urlPart="men's clothing"
-                  setPurchase={setPurchase}
-                />
+                login.isLogin ? (
+                  <CustomItem
+                    urlPart="men's clothing"
+                    setPurchase={setPurchase}
+                  />
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             ></Route>
             <Route
               exact
               path="/womenswear"
               element={
-                <CustomItem
-                  urlPart="women's clothing"
-                  setPurchase={setPurchase}
-                />
+                login.isLogin ? (
+                  <CustomItem
+                    urlPart="women's clothing"
+                    setPurchase={setPurchase}
+                  />
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             ></Route>
             <Route
               exact
               path="/jewellery"
               element={
-                <CustomItem urlPart="jewelery" setPurchase={setPurchase} />
+                login.isLogin ? (
+                  <CustomItem urlPart="jewelery" setPurchase={setPurchase} />
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             ></Route>
             <Route
               exact
               path="/electronics"
               element={
-                <CustomItem urlPart="electronics" setPurchase={setPurchase} />
+                login.isLogin ? (
+                  <CustomItem urlPart="electronics" setPurchase={setPurchase} />
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             ></Route>
             <Route
               exact
               path="/orders"
-              element={<Orders setPurchase={setPurchase} purchase={purchase} />}
+              element={
+                login.isLogin ? (
+                  <Orders setPurchase={setPurchase} purchase={purchase} />
+                ) : (
+                  <Navigate to="/" />
+                )
+              }
             ></Route>
             setPurchase
             <Route
               exact
               path="/cart"
-              element={<Cart purchase={purchase} setPurchase={setPurchase} />}
+              element={
+                login.isLogin ? (
+                  <Cart purchase={purchase} setPurchase={setPurchase} />
+                ) : (
+                  <Navigate to="/" />
+                )
+              }
             ></Route>
           </Routes>
         </div>

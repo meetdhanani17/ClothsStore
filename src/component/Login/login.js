@@ -16,7 +16,7 @@ export default function Login({ setLogin, password }) {
 
   return (
     <>
-      <div>
+      <div className="flex m-auto mt-16 w-64">
         <form onSubmit={loginCheck}>
           <Input
             type="text"

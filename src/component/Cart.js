@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SlideCard from "./Buy/SlideCard";
 import Info from "./Buy/Info";
 import Button from "./input/Button";
 export default function Cart({ purchase, setPurchase }) {
+  const [showForm, setShowForm] = useState();
+
+  useEffect(() => {
+    showForm === false &&
+      setPurchase((p) => {
+        return { buy: { ...p.buy, ...p.cart }, cart: {} };
+      });
+  }, [showForm]);
   function CheckOut() {
-    setPurchase((p) => {
-      return { buy: { ...p.buy, ...p.cart }, cart: {} };
-    });
+    setShowForm((p) => true);
   }
   return (
     <>
@@ -24,6 +30,7 @@ export default function Cart({ purchase, setPurchase }) {
       ) : (
         <p className="text-center pt-2">Please Add Item to Cart</p>
       )}
+      {showForm && <Info showFormBuy={showForm} setBuy={setShowForm} />}
     </>
   );
 }

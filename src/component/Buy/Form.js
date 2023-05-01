@@ -19,12 +19,13 @@ export default function Form({ dataCard, setShowForm, setPurchase }) {
   }
   function Submit(e) {
     e.preventDefault();
-    setPurchase((p) => {
-      return {
-        ...p,
-        buy: { ...p.buy, [dataCard.id]: { ...dataCard, quantity: count } },
-      };
-    });
+    setPurchase &&
+      setPurchase((p) => {
+        return {
+          ...p,
+          buy: { ...p.buy, [dataCard.id]: { ...dataCard, quantity: count } },
+        };
+      });
     setData({
       name: "",
       email: "",
@@ -38,7 +39,9 @@ export default function Form({ dataCard, setShowForm, setPurchase }) {
     <>
       <div className="fixed top-0 right-0 bottom-0 left-0 bg-transparent font-bold grid content-center place-content-center">
         <div className=" border bg-white border-black rounded-xl w-96 px-8 py-4">
-          <SlideCard dataCard={dataCard} count={count} setCount={setCount} />
+          {dataCard && (
+            <SlideCard dataCard={dataCard} count={count} setCount={setCount} />
+          )}
           <form className="m-2" onSubmit={Submit}>
             <Input
               type="text"
