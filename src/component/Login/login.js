@@ -26,7 +26,7 @@ export default function Login({ setLogin, password }) {
           />
           <Input
             type="password"
-            placeholder="Copy password from Console"
+            placeholder={"Password is " + password}
             id="Password"
             text="Enter Password"
           />
