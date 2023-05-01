@@ -6,7 +6,9 @@ import Navbar from "./component/Navbar";
 import CustomItem from "./component/CustomsItem";
 import Cart from "./component/Cart";
 import Orders from "./component/Oreders";
-function App() {
+import Login from "./component/Login/login";
+function App({ password }) {
+  const [login, setLogin] = useState({ isLogin: false, userName: "" });
   const [purchase, setPurchase] = useState({ cart: [], buy: [] });
   return (
     <>
@@ -14,11 +16,19 @@ function App() {
         <Navbar />
         <div className="mt-10">
           <Routes>
-            <Route
-              exact
-              path="/"
-              element={<Home setPurchase={setPurchase} />}
-            ></Route>
+            {login.isLogin ? (
+              <Route
+                exact
+                path="/"
+                element={<Home setPurchase={setPurchase} />}
+              ></Route>
+            ) : (
+              <Route
+                exact
+                path="/"
+                element={<Login setLogin={setLogin} password={password} />}
+              ></Route>
+            )}
             <Route
               exact
               path="/menswear"

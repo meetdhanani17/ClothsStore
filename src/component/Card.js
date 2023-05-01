@@ -49,7 +49,14 @@ export default function Card({ data, setPurchase }) {
           </div>
         </div>
       </div>
-      {buy && <Info data={data} showFormBuy={buy} setBuy={setBuy} setPurchase={setPurchase}/>}
+      {buy && (
+        <Info
+          data={data}
+          showFormBuy={buy}
+          setBuy={setBuy}
+          setPurchase={setPurchase}
+        />
+      )}
     </>
   );
 }
