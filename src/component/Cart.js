@@ -27,7 +27,8 @@ export default function Cart({ purchase, setPurchase }) {
       })}
       {Object.keys(purchase.cart).length > 0 ? (
         <div className="flex  justify-end pr-3">
-        <Button text="Check Out" type="button" onClick={CheckOut} /></div>
+          <Button text="Check Out" type="button" onClick={CheckOut} />
+        </div>
       ) : (
         <p className="text-center pt-2">Please Add Item to Cart</p>
       )}
