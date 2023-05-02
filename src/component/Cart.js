@@ -17,6 +17,15 @@ export default function Cart({ purchase, setPurchase }) {
       };
     });
   }
+  function remove(i) {
+    setPurchase((p) => {
+      delete p.cart[i];
+      return {
+        ...p,
+        cart: { ...p.cart },
+      };
+    }); 
+  }
   function CheckOut() {
     setShowForm((p) => true);
   }
@@ -28,7 +37,9 @@ export default function Cart({ purchase, setPurchase }) {
             key={data.id}
             setPurchase={setPurchase}
             dataCard={purchase.cart[data]}
-            remove={true}
+            remove={() => {
+              remove(data);
+            }}
           />
         );
       })}

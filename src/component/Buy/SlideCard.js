@@ -53,9 +53,11 @@ export default function SlideCard({
         <div className="col-span-9 ">
           <div className="flex justify-between">
             <p className="overflow-hidden h-6 truncate">{dataCard.title}</p>
-            {/* <button className="font-bold text-xl -mt-2 " onClick={() => {}}>
-              &times;
-            </button> */}
+            {remove && (
+              <button className="font-bold text-xl -mt-2 " onClick={remove}>
+                &times;
+              </button>
+            )}
           </div>
           <div className="flex justify-between">
             <p>Price : {dataCard.price}&#8377;</p>
