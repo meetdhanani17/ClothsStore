@@ -3,18 +3,18 @@ import SlideCard from "./Buy/SlideCard";
 
 export default function Orders({ purchase, setPurchase }) {
   return (
-    <>
-      {Object.keys(purchase.buy).map((data) => {
+    <div className="pt-2">
+      {purchase.buy.map((data) => {
         return (
           <>
             <SlideCard
               key={data.id}
               setPurchase={setPurchase}
-              dataCard={purchase.buy[data]}
+              dataCard={data}
             />
           </>
         );
       })}
-    </>
+    </div>
   );
 }

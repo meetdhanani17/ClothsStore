@@ -11,7 +11,6 @@ export default function Card({ data, setPurchase }) {
         ...p,
         cart: {
           ...p.cart,
-
           [data.id]: {
             ...data,
             quantity: p.cart[data.id]?.quantity

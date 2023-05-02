@@ -23,7 +23,7 @@ export default function Form({ dataCard, setShowForm, setPurchase }) {
       setPurchase((p) => {
         return {
           ...p,
-          buy: { ...p.buy, [dataCard.id]: { ...dataCard, quantity: count } },
+          buy: [...p.buy, { ...dataCard, quantity: count }],
         };
       });
     setData({

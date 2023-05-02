@@ -5,6 +5,7 @@ export default function SlideCard({
   setPurchase,
   count,
   setCount,
+  remove,
 }) {
   useEffect(() => {
     setCount && setCount(dataCard.quantity || countNo || 1);
@@ -49,8 +50,13 @@ export default function SlideCard({
             alt="Pic"
           />
         </div>
-        <div className="col-span-9">
-          <p className="overflow-hidden h-6 truncate">{dataCard.title}</p>
+        <div className="col-span-9 ">
+          <div className="flex justify-between">
+            <p className="overflow-hidden h-6 truncate">{dataCard.title}</p>
+            {/* <button className="font-bold text-xl -mt-2 " onClick={() => {}}>
+              &times;
+            </button> */}
+          </div>
           <div className="flex justify-between">
             <p>Price : {dataCard.price}&#8377;</p>
             <p> &#9733;{dataCard.rating.rate}</p>

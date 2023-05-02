@@ -8,7 +8,15 @@ export default function Cart({ purchase, setPurchase }) {
   useEffect(() => {
     showForm === false &&
       setPurchase((p) => {
-        return { buy: { ...p.buy, ...p.cart }, cart: {} };
+        return {
+          buy: [
+            ...p.buy,
+            ...Object.keys(p.cart).map((data) => {
+              return { ...p.cart[data] };
+            }),
+          ],
+          cart: {},
+        };
       });
   }, [showForm]);
   function CheckOut() {
@@ -22,6 +30,7 @@ export default function Cart({ purchase, setPurchase }) {
             key={data.id}
             setPurchase={setPurchase}
             dataCard={purchase.cart[data]}
+            remove={true}
           />
         );
       })}
