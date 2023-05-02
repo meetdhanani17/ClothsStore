@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SlideCard from "./Buy/SlideCard";
 import Info from "./Buy/Info";
 import Button from "./input/Button";
 export default function Cart({ purchase, setPurchase }) {
+  const Navigate = useNavigate();
   const [showForm, setShowForm] = useState();
   function addBuy() {
     setPurchase((p) => {
@@ -16,6 +18,7 @@ export default function Cart({ purchase, setPurchase }) {
         cart: {},
       };
     });
+    Navigate("/orders");
   }
   function remove(i) {
     setPurchase((p) => {
@@ -24,7 +27,7 @@ export default function Cart({ purchase, setPurchase }) {
         ...p,
         cart: { ...p.cart },
       };
-    }); 
+    });
   }
   function CheckOut() {
     setShowForm((p) => true);
