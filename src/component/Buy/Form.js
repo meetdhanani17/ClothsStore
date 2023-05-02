@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import Input from "../input/input";
 import Button from "../input/Button";
 import SlideCard from "./SlideCard";
-export default function Form({ dataCard, setShowForm, setPurchase }) {
+export default function Form({ dataCard, setShowForm, setPurchase, addBuy }) {
   const [count, setCount] = useState();
   const [data, setData] = useState({
     name: "",
@@ -33,6 +33,7 @@ export default function Form({ dataCard, setShowForm, setPurchase }) {
       address: "",
       zip: "",
     });
+    addBuy && addBuy();
     setShowForm(false);
   }
   return ReactDOM.createPortal(

@@ -4,21 +4,19 @@ import Info from "./Buy/Info";
 import Button from "./input/Button";
 export default function Cart({ purchase, setPurchase }) {
   const [showForm, setShowForm] = useState();
-
-  useEffect(() => {
-    showForm === false &&
-      setPurchase((p) => {
-        return {
-          buy: [
-            ...p.buy,
-            ...Object.keys(p.cart).map((data) => {
-              return { ...p.cart[data] };
-            }),
-          ],
-          cart: {},
-        };
-      });
-  }, [showForm]);
+  function addBuy() {
+    setPurchase((p) => {
+      return {
+        buy: [
+          ...p.buy,
+          ...Object.keys(p.cart).map((data) => {
+            return { ...p.cart[data] };
+          }),
+        ],
+        cart: {},
+      };
+    });
+  }
   function CheckOut() {
     setShowForm((p) => true);
   }
@@ -41,7 +39,9 @@ export default function Cart({ purchase, setPurchase }) {
       ) : (
         <p className="text-center pt-2">Please Add Item to Cart</p>
       )}
-      {showForm && <Info showFormBuy={showForm} setBuy={setShowForm} />}
+      {showForm && (
+        <Info showFormBuy={showForm} setBuy={setShowForm} addBuy={addBuy} />
+      )}
     </div>
   );
 }
